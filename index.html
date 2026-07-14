@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Gallery</title>
+
+<link rel="stylesheet" href="index.css">
+<!-- <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  /> -->
+</head>
+
+<body>
+
+<h1  class="fade"> <font size="50px">NATURALIST</font></h1>
+
+<div class="buttons">
+<button onclick="filterSelection('all')">All</button>
+<button onclick="filterSelection('nature')">Nature</button>
+<button onclick="filterSelection('city')">City</button>
+<button onclick="filterSelection('animals')">Animals</button>
+</div>
+
+<div class="gallery ">
+
+<img src="images/nature1.jpg" class="gallery-item nature box" onclick="openLightbox(0)">
+<img src="images/nature2.jpg" class="gallery-item nature box" onclick="openLightbox(1)">
+<img src="images/nature3.jpg" class="gallery-item nature box" onclick="openLightbox(2)">
+<img src="images/nature4.jpg" class="gallery-item nature box " onclick="openLightbox(3)">
+
+<img src="images/nature5.jpg" class="gallery-item nature box" onclick="openLightbox(0)">
+<img src="images/nature6.jpg" class="gallery-item nature box" onclick="openLightbox(1)">
+<img src="images/nature7.jpg" class="gallery-item nature box" onclick="openLightbox(2)">
+<img src="images/nature8.jpg" class="gallery-item nature box " onclick="openLightbox(3)">
+
+<img src="images/city1.jpg" class="gallery-item city box" onclick="openLightbox(4)">
+<img src="images/city2.jpg" class="gallery-item city box" onclick="openLightbox(5)">
+<img src="images/city3.jpg" class="gallery-item city box" onclick="openLightbox(6)">
+<img src="images/city4.jpg" class="gallery-item city box" onclick="openLightbox(7)">
+
+<img src="images/city5.jpg" class="gallery-item city box" onclick="openLightbox(8)">
+<img src="images/city6.jpg" class="gallery-item city box" onclick="openLightbox(5)">
+<img src="images/city7.jpg" class="gallery-item city box" onclick="openLightbox(6)">
+<img src="images/city8.jpg" class="gallery-item city box" onclick="openLightbox(7)">
+
+
+<img src="images/animal1.jpg" class="gallery-item animals box" onclick="openLightbox(8)">
+<img src="images/animal2.jpg" class="gallery-item animals box" onclick="openLightbox(9)">
+<img src="images/animal3.jpg" class="gallery-item animals box" onclick="openLightbox(10)">
+<img src="images/animal4.jpg" class="gallery-item animals box" onclick="openLightbox(11)">
+
+<img src="images/animal5.jpg" class="gallery-item animals box" onclick="openLightbox(8)">
+<img src="images/animal6.jpg" class="gallery-item animals box" onclick="openLightbox(9)">
+<img src="images/animal7.jpg" class="gallery-item animals box" onclick="openLightbox(10)">
+<img src="images/animal8.jpg" class="gallery-item animals box" onclick="openLightbox(11)">
+
+
+
+</div>
+
+<div id="lightbox">
+
+<span class="close" onclick="closeLightbox()">&times;</span>
+
+<button class="prev" onclick="changeImage(-1)">❮</button>
+
+<img id="lightbox-img">
+
+<button class="next" onclick="changeImage(1)">❯</button>
+
+</div>
+<!-- <script type="module">
+  import { animate, scroll } from "https://cdn.jsdelivr.net/npm/motion@latest/+esm"
+</script> -->
+<script src="script.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
+
+

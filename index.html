@@ -3,85 +3,369 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Image Gallery</title>
+<title>Naturalist — Professional Image Gallery</title>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="index.css">
-<!-- <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-  /> -->
 </head>
-
 <body>
 
-<h1  class="fade"> <font size="50px">NATURALIST</font></h1>
+  <!-- Nature Background Canvas -->
+<canvas id="nature-canvas"></canvas>
 
-<div class="buttons">
-<button onclick="filterSelection('all')">All</button>
-<button onclick="filterSelection('nature')">Nature</button>
-<button onclick="filterSelection('city')">City</button>
-<button onclick="filterSelection('animals')">Animals</button>
+<div class="container">
+
+  <!-- Header Section -->
+  <header class="header">
+    <h1 class="site-title">NATURALIST</h1>
+    <p class="site-subtitle">Curated collection of nature, city &amp; animal photography</p>
+  </header>
+
+  <!-- Filter Buttons -->
+  <div class="filters">
+    <button class="filter-btn active" data-filter="all" onclick="filterSelection('all')">
+      <span class="filter-icon">⊞</span>
+      <span class="filter-label">All</span>
+      <span class="filter-count" id="count-all">0</span>
+    </button>
+    <button class="filter-btn" data-filter="nature" onclick="filterSelection('nature')">
+      <span class="filter-icon">🌿</span>
+      <span class="filter-label">Nature</span>
+      <span class="filter-count" id="count-nature">0</span>
+    </button>
+    <button class="filter-btn" data-filter="city" onclick="filterSelection('city')">
+      <span class="filter-icon">🏙️</span>
+      <span class="filter-label">City</span>
+      <span class="filter-count" id="count-city">0</span>
+    </button>
+    <button class="filter-btn" data-filter="animals" onclick="filterSelection('animals')">
+      <span class="filter-icon">🐾</span>
+      <span class="filter-label">Animals</span>
+      <span class="filter-count" id="count-animals">0</span>
+    </button>
+  </div>
+
+  <!-- Gallery Grid -->
+  <div class="gallery" id="gallery">
+
+    <!-- Nature (8 images) -->
+    <div class="gallery-item nature" data-index="0">
+      <div class="gallery-img-wrapper">
+        <img src="images/nature1.jpg" alt="Nature landscape" loading="lazy" onclick="openLightbox(0)">
+        <div class="img-overlay">
+          <div class="overlay-content">
+            <span class="overlay-category">Nature</span>
+            <h3 class="overlay-title">Mist Valley</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-item nature" data-index="1">
+      <div class="gallery-img-wrapper">
+        <img src="images/nature2.jpg" alt="Nature landscape" loading="lazy" onclick="openLightbox(1)">
+        <div class="img-overlay">
+          <div class="overlay-content">
+            <span class="overlay-category">Nature</span>
+            <h3 class="overlay-title">River Bend</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-item nature" data-index="2">
+      <div class="gallery-img-wrapper">
+        <img src="images/nature3.jpg" alt="Nature landscape" loading="lazy" onclick="openLightbox(2)">
+        <div class="img-overlay">
+          <div class="overlay-content">
+            <span class="overlay-category">Nature</span>
+            <h3 class="overlay-title">Sunset Field</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-item nature" data-index="3">
+      <div class="gallery-img-wrapper">
+        <img src="images/nature4.jpg" alt="Nature landscape" loading="lazy" onclick="openLightbox(3)">
+        <div class="img-overlay">
+          <div class="overlay-content">
+            <span class="overlay-category">Nature</span>
+            <h3 class="overlay-title">Forest Canopy</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-item nature" data-index="4">
+      <div class="gallery-img-wrapper">
+        <img src="images/nature5.jpg" alt="Nature landscape" loading="lazy" onclick="openLightbox(4)">
+        <div class="img-overlay">
+          <div class="overlay-content">
+            <span class="overlay-category">Nature</span>
+            <h3 class="overlay-title">Golden Hour</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-item nature" data-index="5">
+      <div class="gallery-img-wrapper">
+        <img src="images/nature6.jpg" alt="Nature landscape" loading="lazy" onclick="openLightbox(5)">
+        <div class="img-overlay">
+          <div class="overlay-content">
+            <span class="overlay-category">Nature</span>
+            <h3 class="overlay-title">Autumn Path</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-item nature" data-index="6">
+      <div class="gallery-img-wrapper">
+        <img src="images/nature7.jpg" alt="Nature landscape" loading="lazy" onclick="openLightbox(6)">
+        <div class="img-overlay">
+          <div class="overlay-content">
+            <span class="overlay-category">Nature</span>
+            <h3 class="overlay-title">Desert Dunes</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-item nature" data-index="7">
+      <div class="gallery-img-wrapper">
+        <img src="images/nature8.jpg" alt="Nature landscape" loading="lazy" onclick="openLightbox(7)">
+        <div class="img-overlay">
+          <div class="overlay-content">
+            <span class="overlay-category">Nature</span>
+            <h3 class="overlay-title">Mountain Peak</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- City (8 images) -->
+    <div class="gallery-item city" data-index="8">
+      <div class="gallery-img-wrapper">
+        <img src="images/city1.jpg" alt="City landscape" loading="lazy" onclick="openLightbox(8)">
+        <div class="img-overlay">
+          <div class="overlay-content">
+            <span class="overlay-category">City</span>
+            <h3 class="overlay-title">Downtown</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-item city" data-index="9">
+      <div class="gallery-img-wrapper">
+        <img src="images/city2.jpg" alt="City landscape" loading="lazy" onclick="openLightbox(9)">
+        <div class="img-overlay">
+          <div class="overlay-content">
+            <span class="overlay-category">City</span>
+            <h3 class="overlay-title">Night Glow</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-item city" data-index="10">
+      <div class="gallery-img-wrapper">
+        <img src="images/city3.jpg" alt="City landscape" loading="lazy" onclick="openLightbox(10)">
+        <div class="img-overlay">
+          <div class="overlay-content">
+            <span class="overlay-category">City</span>
+            <h3 class="overlay-title">Bridge View</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-item city" data-index="11">
+      <div class="gallery-img-wrapper">
+        <img src="images/city4.jpg" alt="City landscape" loading="lazy" onclick="openLightbox(11)">
+        <div class="img-overlay">
+          <div class="overlay-content">
+            <span class="overlay-category">City</span>
+            <h3 class="overlay-title">Harbor Line</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-item city" data-index="12">
+      <div class="gallery-img-wrapper">
+        <img src="images/city5.jpg" alt="City landscape" loading="lazy" onclick="openLightbox(12)">
+        <div class="img-overlay">
+          <div class="overlay-content">
+            <span class="overlay-category">City</span>
+            <h3 class="overlay-title">Cityscape</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-item city" data-index="13">
+      <div class="gallery-img-wrapper">
+        <img src="images/city6.jpg" alt="City landscape" loading="lazy" onclick="openLightbox(13)">
+        <div class="img-overlay">
+          <div class="overlay-content">
+            <span class="overlay-category">City</span>
+            <h3 class="overlay-title">Urban Life</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-item city" data-index="14">
+      <div class="gallery-img-wrapper">
+        <img src="images/city7.jpg" alt="City landscape" loading="lazy" onclick="openLightbox(14)">
+        <div class="img-overlay">
+          <div class="overlay-content">
+            <span class="overlay-category">City</span>
+            <h3 class="overlay-title">Skyline</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-item city" data-index="15">
+      <div class="gallery-img-wrapper">
+        <img src="images/city8.jpg" alt="City landscape" loading="lazy" onclick="openLightbox(15)">
+        <div class="img-overlay">
+          <div class="overlay-content">
+            <span class="overlay-category">City</span>
+            <h3 class="overlay-title">Metropolis</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Animals (8 images) -->
+    <div class="gallery-item animals" data-index="16">
+      <div class="gallery-img-wrapper">
+        <img src="images/animal1.jpg" alt="Animal" loading="lazy" onclick="openLightbox(16)">
+        <div class="img-overlay">
+          <div class="overlay-content">
+            <span class="overlay-category">Animals</span>
+            <h3 class="overlay-title">Wild Stare</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-item animals" data-index="17">
+      <div class="gallery-img-wrapper">
+        <img src="images/animal2.jpg" alt="Animal" loading="lazy" onclick="openLightbox(17)">
+        <div class="img-overlay">
+          <div class="overlay-content">
+            <span class="overlay-category">Animals</span>
+            <h3 class="overlay-title">Savanna King</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-item animals" data-index="18">
+      <div class="gallery-img-wrapper">
+        <img src="images/animal3.jpg" alt="Animal" loading="lazy" onclick="openLightbox(18)">
+        <div class="img-overlay">
+          <div class="overlay-content">
+            <span class="overlay-category">Animals</span>
+            <h3 class="overlay-title">Graceful Giraffe</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-item animals" data-index="19">
+      <div class="gallery-img-wrapper">
+        <img src="images/animal4.jpg" alt="Animal" loading="lazy" onclick="openLightbox(19)">
+        <div class="img-overlay">
+          <div class="overlay-content">
+            <span class="overlay-category">Animals</span>
+            <h3 class="overlay-title">Zebra Plains</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-item animals" data-index="20">
+      <div class="gallery-img-wrapper">
+        <img src="images/animal5.jpg" alt="Animal" loading="lazy" onclick="openLightbox(20)">
+        <div class="img-overlay">
+          <div class="overlay-content">
+            <span class="overlay-category">Animals</span>
+            <h3 class="overlay-title">Forest Friend</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-item animals" data-index="21">
+      <div class="gallery-img-wrapper">
+        <img src="images/animal6.jpg" alt="Animal" loading="lazy" onclick="openLightbox(21)">
+        <div class="img-overlay">
+          <div class="overlay-content">
+            <span class="overlay-category">Animals</span>
+            <h3 class="overlay-title">Big Cat</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-item animals" data-index="22">
+      <div class="gallery-img-wrapper">
+        <img src="images/animal7.jpg" alt="Animal" loading="lazy" onclick="openLightbox(22)">
+        <div class="img-overlay">
+          <div class="overlay-content">
+            <span class="overlay-category">Animals</span>
+            <h3 class="overlay-title">Polar Explorer</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-item animals" data-index="23">
+      <div class="gallery-img-wrapper">
+        <img src="images/animal8.jpg" alt="Animal" loading="lazy" onclick="openLightbox(23)">
+        <div class="img-overlay">
+          <div class="overlay-content">
+            <span class="overlay-category">Animals</span>
+            <h3 class="overlay-title">Night Hunter</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox">
+    <div class="lightbox-backdrop"></div>
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <button class="lightbox-prev" onclick="changeImage(-1)" aria-label="Previous image">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <div class="lightbox-content">
+      <div class="lightbox-counter" id="lightbox-counter">1 / 30</div>
+      <img id="lightbox-img" src="" alt="Gallery image">
+      <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+    <button class="lightbox-next" onclick="changeImage(1)" aria-label="Next image">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+  </div>
+
 </div>
 
-<div class="gallery ">
-
-<img src="images/nature1.jpg" class="gallery-item nature box" onclick="openLightbox(0)">
-<img src="images/nature2.jpg" class="gallery-item nature box" onclick="openLightbox(1)">
-<img src="images/nature3.jpg" class="gallery-item nature box" onclick="openLightbox(2)">
-<img src="images/nature4.jpg" class="gallery-item nature box " onclick="openLightbox(3)">
-
-<img src="images/nature5.jpg" class="gallery-item nature box" onclick="openLightbox(0)">
-<img src="images/nature6.jpg" class="gallery-item nature box" onclick="openLightbox(1)">
-<img src="images/nature7.jpg" class="gallery-item nature box" onclick="openLightbox(2)">
-<img src="images/nature8.jpg" class="gallery-item nature box " onclick="openLightbox(3)">
-
-<img src="images/city1.jpg" class="gallery-item city box" onclick="openLightbox(4)">
-<img src="images/city2.jpg" class="gallery-item city box" onclick="openLightbox(5)">
-<img src="images/city3.jpg" class="gallery-item city box" onclick="openLightbox(6)">
-<img src="images/city4.jpg" class="gallery-item city box" onclick="openLightbox(7)">
-
-<img src="images/city5.jpg" class="gallery-item city box" onclick="openLightbox(8)">
-<img src="images/city6.jpg" class="gallery-item city box" onclick="openLightbox(5)">
-<img src="images/city7.jpg" class="gallery-item city box" onclick="openLightbox(6)">
-<img src="images/city8.jpg" class="gallery-item city box" onclick="openLightbox(7)">
-
-
-<img src="images/animal1.jpg" class="gallery-item animals box" onclick="openLightbox(8)">
-<img src="images/animal2.jpg" class="gallery-item animals box" onclick="openLightbox(9)">
-<img src="images/animal3.jpg" class="gallery-item animals box" onclick="openLightbox(10)">
-<img src="images/animal4.jpg" class="gallery-item animals box" onclick="openLightbox(11)">
-
-<img src="images/animal5.jpg" class="gallery-item animals box" onclick="openLightbox(8)">
-<img src="images/animal6.jpg" class="gallery-item animals box" onclick="openLightbox(9)">
-<img src="images/animal7.jpg" class="gallery-item animals box" onclick="openLightbox(10)">
-<img src="images/animal8.jpg" class="gallery-item animals box" onclick="openLightbox(11)">
-
-
-
-</div>
-
-<div id="lightbox">
-
-<span class="close" onclick="closeLightbox()">&times;</span>
-
-<button class="prev" onclick="changeImage(-1)">❮</button>
-
-<img id="lightbox-img">
-
-<button class="next" onclick="changeImage(1)">❯</button>
-
-</div>
-<!-- <script type="module">
-  import { animate, scroll } from "https://cdn.jsdelivr.net/npm/motion@latest/+esm"
-</script> -->
+<!-- Three.js loaded dynamically from CDN in script.js -->
 <script src="script.js"></script>
-
-
-
-
-
-
-
 
 </body>
 </html>
